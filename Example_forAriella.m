@@ -2,7 +2,7 @@
 % must run this each time you start up matlab
 initCobraToolbox(false)
 % Set up folder to save results to
-runName = ['ExampleFolderName'];
+runName = ['Example_folder'];
 % mkdir(runName)
 %% Load Individual Models
 % change to how you saved the models
@@ -10,10 +10,10 @@ load('CRC_model.mat')
 load('fibro.mat')
 load('m1_model.mat')
 load('m2_model.mat')
+mergeGenesFlag = false; % is this what we want idk? yes
 
 %% Pair Models
 % Example: 1-1 CRC + M2
-mergeGenesFlag = false; % is this what we want idk? yes
 models{1,1} = CRC_model;
 models{2,1} = m2_model;
 [pairedModelCRC_M2] = createMultipleSpeciesModel(models, 'mergeGenesFlag', mergeGenesFlag, 'remCyclesFlag', false);
