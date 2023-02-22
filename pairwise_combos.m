@@ -6,14 +6,13 @@ initCobraToolbox(false)
 % Set up folder to save results to
 runName = ['data/feb22'];
 mkdir(runName)
+
 %% Load Individual Models
-% change to how you saved the models
 load('CRC_model.mat')
 load('fibro.mat')
 load('m1_model.mat')
 load('m2_model.mat')
 % testdata = importdata('data/twosamples/combo_1.mat');
-mergeGenesFlag = false;
 
 %% Define pairwise combinations
 pairwises{1} = {CRC_model; m1_model}; % CRC and M1
@@ -28,7 +27,7 @@ pairwise_names = {"CRC-M1", "CRC-M2", "CAF-M1", "CAF-M2", "CRC-CAF", "M1-M2"};
 
 for i = 1 : num_combos
 	models = pairwises{i};
-	pairedModels{i} = createMultipleSpeciesModel(models, 'mergeGenesFlag', mergeGenesFlag, 'remCyclesFlag', false);
+	pairedModels{i} = createMultipleSpeciesModel(models, 'mergeGenesFlag', false, 'remCyclesFlag', false);
 end
 
 %% Set up sampling
@@ -49,3 +48,4 @@ parfor i = 1 : num_combos
 	parsave(runName + "/combo_" + pairwise_names{i} + ".mat", samples_totalModel);
 end
 
+delete(gcp('nocreate'))
