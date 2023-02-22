@@ -2,10 +2,10 @@ clear all;
 
 %% Set up Cobra toolbox
 % must run this each time you start up matlab
-% initCobraToolbox(false)
+initCobraToolbox(false)
 % Set up folder to save results to
 runName = ['data/feb22'];
-% mkdir(runName)
+mkdir(runName)
 %% Load Individual Models
 % change to how you saved the models
 load('CRC_model.mat')
@@ -24,7 +24,7 @@ pairwises{5} = {CRC_model; fibro}; % Fibroblast and CRC
 pairwises{6} = {m1_model; m2_model}; % M1 and M2
 num_combos = 6;
 
-num_individual = 4;
+pairwise_names = {"CRC-M1", "CRC-M2", "CAF-M1", "CAF-M2", "CRC-CAF", "M1-M2"};
 
 for i = 1 : num_combos
 	models = pairwises{i};
@@ -46,9 +46,6 @@ parfor i = 1 : num_combos
 	pairedModel = pairedModels{i};
 	[~, samples_totalModel] =  sampleCbModel(pairedModel, [], 'RHMC', Samplingoptions);
 	% samples_totalModel = testdata;
-	parsave(runName + "/combo_" + string(i) + ".mat", samples_totalModel);
+	parsave(runName + "/combo_" + pairwise_names{i} + ".mat", samples_totalModel);
 end
-
-% parfor i = 1 : num_individual
-
 
