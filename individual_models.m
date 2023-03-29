@@ -12,7 +12,7 @@ load('CRC_model.mat')
 load('fibro.mat')
 load('m1_model.mat')
 load('m2_model.mat')
-testdata = importdata('data/twosamples/combo_1.mat');
+% testdata = importdata('data/twosamples/combo_1.mat');
 
 %% Define individual models
 individuals{1} = CRC_model;
@@ -36,8 +36,8 @@ Samplingoptions.optPercentage = 0;
 parpool(4);
 parfor i = 1 : num_individual
 	model = individuals{i};
-	% [~, samples_totalModel] =  sampleCbModel(model, [], 'RHMC', Samplingoptions);
-	samples_totalModel = testdata;
+	[~, samples_totalModel] =  sampleCbModel(model, [], 'RHMC', Samplingoptions);
+	% samples_totalModel = testdata;
 	parsave(runName + "/alone_" + individual_names{i} + ".mat", samples_totalModel);
 end
 
