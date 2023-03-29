@@ -4,15 +4,15 @@ clear all;
 % must run this each time you start up matlab
 % initCobraToolbox(false)
 % Set up folder to save results to
-runName = ['data/feb22'];
+runName = ['data/mar8'];
 mkdir(runName)
 
 %% Load Individual Models
-load('CRC_model.mat')
-load('fibro.mat')
-load('m1_model.mat')
-load('m2_model.mat')
-testdata = importdata('data/twosamples/combo_1.mat');
+load('models/CRC_model.mat')
+load('models/fibro.mat')
+load('models/m1_model.mat')
+load('models/m2_model.mat')
+% testdata = importdata('data/twosamples/combo_1.mat');
 
 %% Define individual models
 individuals{1} = CRC_model;
@@ -34,11 +34,15 @@ Samplingoptions.optPercentage = 0;
 %% Sample individual models
 
 parpool(4);
-parfor i = 1 : num_individual
+parfor i = 1 : num_individual-1 % -1 bc already did CAF
 	model = individuals{i};
-	% [~, samples_totalModel] =  sampleCbModel(model, [], 'RHMC', Samplingoptions);
-	samples_totalModel = testdata;
+	[~, samples_totalModel] =  sampleCbModel(model, [], 'RHMC', Samplingoptions);
 	parsave(runName + "/alone_" + individual_names{i} + ".mat", samples_totalModel);
 end
 
-delete(gcp('nocreate'))
+% delete(gcp('nocreate'))
+
+% i = 4;
+% model = individuals{i};
+% [~, samples_totalModel] =  sampleCbModel(model, [], 'RHMC', Samplingoptions);
+% save(runName + "/alone_" + individual_names{i} + ".mat", 'samples_totalModel');

@@ -8,10 +8,10 @@ runName = ['data/feb22'];
 mkdir(runName)
 
 %% Load Individual Models
-load('CRC_model.mat')
-load('fibro.mat')
-load('m1_model.mat')
-load('m2_model.mat')
+load('models/CRC_model.mat')
+load('models/fibro.mat')
+load('models/m1_model.mat')
+load('models/m2_model.mat')
 % testdata = importdata('data/twosamples/combo_1.mat');
 
 %% Define pairwise combinations
