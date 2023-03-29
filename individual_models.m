@@ -12,7 +12,6 @@ load('models/CRC_model.mat')
 load('models/fibro.mat')
 load('models/m1_model.mat')
 load('models/m2_model.mat')
-% testdata = importdata('data/twosamples/combo_1.mat');
 
 %% Define individual models
 individuals{1} = CRC_model;

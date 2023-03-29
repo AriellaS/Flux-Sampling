@@ -48,10 +48,11 @@ save([runName strcat('/', 'samples_Model2_Alone.mat')], 'samples_Model2_Alone');
 %% Normalizing samples: I need to do more reading so see why its necessary
 % I think its important so all fluxes are on same scale
 % lets do it here, divide each reaction flux by total flux through network
+% umm does this work ? looks like youre messing up the total sum by not creating a new variable
 for i = 1:iterations
    Model1Alone(:,i) = Model1Alone(:,i) ./ (sum(abs(Model1Alone(:,i)),1, 'omitnan'));
    Model2Alone(:,i) = Model2Alone(:,i) ./ (sum(abs(Model2Alone(:,i)),1, 'omitnan'));
-   samples_totalModel(:,i) = samples_totalModel(:,i) ./ (sum(abs(samples_totalModel(:,i)),1, 'omitnan'));  
+   samples_totalModel(:,i) = samples_totalModel(:,i) ./ (sum(abs(samples_totalModel(:,i)),1, 'omitnan'));
 end
 
 %% Evaluate output reactions we want
