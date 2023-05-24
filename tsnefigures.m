@@ -17,8 +17,8 @@ combo_M1_M2 = importdata("data/" + run_name + "/combo_M1-M2.mat");
 
 % CAF
 CAF_numsamples = min([size(alone_CAF,2) size(combo_CRC_CAF,2) size(combo_CAF_M1,2) size(combo_CAF_M2)]);
-CAF_combo_CRC_CAF = combo_CRC_CAF(end-10567:end,:);
-CAF_combo_CAF_M1 = combo_CAF_M1(1:10568,:); % correct rxns number?
+CAF_combo_CRC_CAF = combo_CRC_CAF(8599:8599+10567,:);
+CAF_combo_CAF_M1 = combo_CAF_M1(1:10568,:);
 CAF_combo_CAF_M2 = combo_CAF_M2(1:10568,:);
 all_CAF = cat(2, alone_CAF(:,1:CAF_numsamples), CAF_combo_CRC_CAF(:,1:CAF_numsamples), CAF_combo_CAF_M1(:,1:CAF_numsamples), CAF_combo_CAF_M2(:,1:CAF_numsamples)); % same # samples?
 CAF_groups = cat(1,repmat("alone-CAF",CAF_numsamples,1), repmat("CAF-CRC",CAF_numsamples,1), repmat("CAF-M1",CAF_numsamples,1), repmat("CAF-M2",CAF_numsamples,1));
@@ -33,17 +33,17 @@ CRC_groups = cat(1,repmat("alone-CRC",CRC_numsamples,1), repmat("CRC-CAF",CRC_nu
 
 % M1
 M1_numsamples = min([size(alone_M1,2) size(combo_CAF_M1,2) size(combo_CRC_M1,2) size(combo_M1_M2)]);
-M1_combo_CAF_M1 = combo_CAF_M1(end-7068:end,:);
-M1_combo_CRC_M1 = combo_CRC_M1(end-7068:end,:);
+M1_combo_CAF_M1 = combo_CAF_M1(10588:10588+7068,:);
+M1_combo_CRC_M1 = combo_CRC_M1(8599:8599+7068,:);
 M1_combo_M1_M2= combo_M1_M2(1:7069,:);
 all_M1 = cat(2, alone_M1(:,1:M1_numsamples), M1_combo_CAF_M1(:,1:M1_numsamples), M1_combo_CRC_M1(:,1:M1_numsamples), M1_combo_M1_M2(:,1:M1_numsamples));
 M1_groups = cat(1,repmat("alone-M1",M1_numsamples,1), repmat("M1-CAF",M1_numsamples,1), repmat("M1-CRC",M1_numsamples,1), repmat("M1-M2",M1_numsamples,1));
 
 % M2
 M2_numsamples = min([size(alone_M2,2) size(combo_CAF_M2,2) size(combo_CRC_M2,2) size(combo_M1_M2)]);
-M2_combo_CAF_M2 = combo_CAF_M2(end-7248:end,:);
-M2_combo_CRC_M2 = combo_CRC_M2(end-7248:end,:);
-M2_combo_M1_M2= combo_M1_M2(end-7248:end,:);
+M2_combo_CAF_M2 = combo_CAF_M2(10588:10588+7248,:);
+M2_combo_CRC_M2 = combo_CRC_M2(8599:8599+7248,:);
+M2_combo_M1_M2= combo_M1_M2(7109:7109+7248,:);
 all_M2 = cat(2, alone_M2(:,1:M2_numsamples), M2_combo_CAF_M2(:,1:M2_numsamples), M2_combo_CRC_M2(:,1:M2_numsamples), M2_combo_M1_M2(:,1:M2_numsamples));
 M2_groups = cat(1,repmat("alone-M2",M2_numsamples,1), repmat("M2-CAF",M2_numsamples,1), repmat("M2-CRC",M2_numsamples,1), repmat("M2-M1",M2_numsamples,1));
 
