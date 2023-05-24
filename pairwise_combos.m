@@ -32,7 +32,6 @@ end
 
 %% Set up sampling
 iterations = 5000; % How many samples to generate
-% iterations = 2; % How many samples to generate
 Samplingoptions.nStepsPerPoint = 100; %sampling density
 Samplingoptions.nPointsReturned = iterations; %number of points returned
 Samplingoptions.toRound = 0; %whether or not the polytope is rounded
@@ -44,7 +43,6 @@ parpool(4);
 parfor i = 1 : num_combos
 	pairedModel = pairedModels{i};
 	[~, samples_totalModel] =  sampleCbModel(pairedModel, [], 'RHMC', Samplingoptions);
-	% samples_totalModel = testdata;
 	parsave(runName + "/combo_" + pairwise_names{i} + ".mat", samples_totalModel);
 end
 

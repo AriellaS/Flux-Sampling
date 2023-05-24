@@ -11,7 +11,7 @@ pairwises{1} = {CRC_model; m1_model}; % CRC and M1
 pairwises{2} = {CRC_model; m2_model}; % CRC and M2
 pairwises{3} = {fibro; m1_model}; % Fibroblast and M1
 pairwises{4} = {fibro; m2_model}; % Fibroblast and M2
-pairwises{5} = {CRC_model; fibro}; % Fibroblast and CRC
+pairwises{5} = {CRC_model; fibro}; % CRC and Fibroblast
 pairwises{6} = {m1_model; m2_model}; % M1 and M2
 num_combos = 6;
 
